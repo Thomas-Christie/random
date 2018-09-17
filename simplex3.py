@@ -18,7 +18,7 @@ class Simplex:
                 most_neg = self.tableau[-3][key]
                 index = key
         self.piv = index
-        print(self.piv)
+        #print(self.piv)
 
     def gen_tableau(self):
         rows = [1,2,3]
@@ -38,7 +38,7 @@ class Simplex:
         rows.remove(one_row)
         new_row = []
         for num in self.tableau[-one_row]:
-            print("One row {}".format(one_row))
+            #print("One row {}".format(one_row))
             new_num = num/self.tableau[-one_row][self.piv]
             new_row.append(new_num)
         new_tableau[-one_row] = new_row
@@ -64,28 +64,28 @@ class Simplex:
 def main():
     #Arrays take the form: [P, x, y, z, s1, s2, V]
     print("Please input the coefficients for the Objective Function: ")
-    ox = int(input("X: "))
-    oy = int(input("Y: "))
-    oz = int(input("Z: "))
+    ox = float(input("X: "))
+    oy = float(input("Y: "))
+    oz = float(input("Z: "))
     objective = [1, -ox, -oy, -oz, 0, 0, 0]
     print("Please input the coefficients for the First Constraint: ")
-    c1x = int(input("X: "))
-    c1y = int(input("Y: "))
-    c1z = int(input("Z: "))
-    c1 = int(input("Constraint value: "))
+    c1x = float(input("X: "))
+    c1y = float(input("Y: "))
+    c1z = float(input("Z: "))
+    c1 = float(input("Constraint value: "))
     constraint_1 = [0, c1x, c1y, c1z, 1, 0, c1]
     print("Please input the coefficients for the Second Constraint: ")
-    c2x = int(input("X: "))
-    c2y = int(input("Y: "))
-    c2z = int(input("Z: "))
-    c2 = int(input("Constraint value: "))
+    c2x = float(input("X: "))
+    c2y = float(input("Y: "))
+    c2z = float(input("Z: "))
+    c2 = float(input("Constraint value: "))
     constraint_2 = [0, c2x, c2y, c2z, 0, 1, c2]
     simplex = Simplex(objective, constraint_1, constraint_2)
     simplex.run()
     x = PrettyTable()
     x.field_names = ["P", "x", "y", "z", "s1", "s2", "V"]
     for each in simplex.tableau:
-        print(each)
+        #print(each)
         x.add_row(each)
     print(x)
 
